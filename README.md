@@ -18,6 +18,8 @@ sudo make install
 
 `-o` the roles, must be exactly `2` separated by space
 
+Example running the program `nitruks -f frost -o user root`
+
 ---
 
 ## Windows users
