@@ -67,10 +67,10 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     if args.len() < 6 { process::exit(1); }
     let mut usernames = vec!["frost".to_string()];
-    let mut roles = vec!["user".to_string(), "root".to_string()];
+    let mut roles = Vec::new();
     let separators = vec!["".to_string(), "_".to_string()];
     if args[1].starts_with('-') && args[1].contains('f') { usernames = vec![args[2].clone()]; }
-    if args[3].starts_with('-') && args[3].contains('o') { roles = vec![args[4].clone(), args[5].clone()]; }
+    if args[3].starts_with('-') && args[3].contains('o') { for x in (4..args.len()).rev() { roles.push(args[x].clone()); } }
     for username in &usernames {
         for role in &roles {
             for sep in &separators {
