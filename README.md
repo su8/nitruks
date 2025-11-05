@@ -45,6 +45,48 @@ if __name__ == '__main__':
 
 ---
 
+## Rust version of nitruks
+
+```rust
+use std::env;
+use std::process;
+
+fn variants(word: &str) -> Vec<String> {
+    let mut result = Vec::new();
+    result.push(word.to_string());
+    if !word.is_empty() {
+        let mut capitalized = word.to_string();
+        if let Some(first_char) = capitalized.get_mut(0..1) { first_char.make_ascii_uppercase(); }
+        result.push(capitalized);
+    }
+    result.push(word.to_uppercase());
+    result
+}
+
+fn main() {
+    let args: Vec<String> = env::args().collect();
+    if args.len() < 6 { process::exit(0); }
+    let mut usernames = vec!["frost".to_string()];
+    let mut roles = vec!["user".to_string(), "root".to_string()];
+    let separators = vec!["".to_string(), "_".to_string()];
+    if args[1].starts_with('-') && args[1].contains('f') { usernames = vec![args[2].clone()]; }
+    if args[3].starts_with('-') && args[3].contains('o') { roles = vec![args[4].clone(), args[5].clone()]; }
+    for username in &usernames {
+        for role in &roles {
+            for sep in &separators {
+                for user in variants(username) {
+                    for r in variants(role) {
+                        println!("{}{}{}", user, sep, r);
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+---
+
 ## Windows users
 
 Tested with [Visual Studio Code Editor](https://code.visualstudio.com/download), but you need to install [MingW](https://github.com/niXman/mingw-builds-binaries/releases/download/12.2.0-rt_v10-rev0/x86_64-12.2.0-release-posix-seh-rt_v10-rev0.7z), once downloaded extract it to **C:\MingW**, then re-open [Visual Studio Code Editor](https://code.visualstudio.com/download), you might want to install C\C++ extensions if you plan to write C\C++ code with the editor. If you plan to contribute to this project go to **File->Preferences->Settings** and type to search for **cppStandard** and set it to c17 to both C++ and C.
