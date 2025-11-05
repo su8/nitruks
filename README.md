@@ -25,14 +25,9 @@ Example running the program `nitruks -f frost -o user root`
 ## Python version of nitruks
 
 ```python
-import sys
+import sys;
 import itertools;
-import sys
 
-def main():
-    roles = []
-    for arg in sys.argv[1:]:
-        roles.append(arg)
 class Generate(object):
   def variants(self, word):
     return [word, word.capitalize(), word.upper()];
