@@ -29,11 +29,11 @@ std::vector<std::string> variants(const std::string &word);
 
 int main(int argc, char *argv[]) {
   if (argc < 6) { return EXIT_FAILURE; }
-  std::vector<std::string> usernames = {"frost"};
-  std::vector<std::string> roles = {"user", "root"};
-  std::vector<std::string> separators = {"", "_"};
-  if (argv[1][1] == 'f') { usernames = {argv[2]}; };
-  if (argv[3][1] == 'o') { roles = {argv[4], argv[5]}; };
+  std::vector<std::string> usernames = { "frost" };
+  std::vector<std::string> roles = { "user", "root" };
+  std::vector<std::string> separators = { "", "_" };
+  if (argv[1][1] == 'f') { usernames = { argv[2]}; };
+  if (argv[3][1] == 'o') { for (unsigned int x = argc - 1U; x >= 4U ; x--) { roles.emplace_back( argv[x] ); } };
   for (const auto &x : usernames) {
     for (const auto &z : roles) {
       for (const auto &sep : separators) {
