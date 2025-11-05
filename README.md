@@ -1,5 +1,5 @@
 # nitruks [![C/C++ CI](https://github.com/su8/nitruks/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/su8/nitruks/actions/workflows/c-cpp.yml)
-Generate alternate case from runtime strings. Perfect for generating permutations of credentials for testing or security auditing. generates all possible combinations of a username and two roles with different casing styles and separators. It's useful for creating variations of strings, such as for password cracking tools like rainbow tablesow tables to be used by `john the ripper`.
+Generate alternate case from runtime strings. Perfect for generating permutations of credentials for testing or security auditing. generates all possible combinations of a username and two roles with different casing styles and separators. It's useful for creating variations of strings, such as for password cracking tools like rainbow tables to be used by `john the ripper`.
 
 # Compile
 
@@ -65,7 +65,7 @@ fn variants(word: &str) -> Vec<String> {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    if args.len() < 6 { process::exit(0); }
+    if args.len() < 6 { process::exit(1); }
     let mut usernames = vec!["frost".to_string()];
     let mut roles = vec!["user".to_string(), "root".to_string()];
     let separators = vec!["".to_string(), "_".to_string()];
