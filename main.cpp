@@ -27,18 +27,6 @@ MA 02110-1301, USA.
 
 std::vector<std::string> variants(const std::string &word);
 
-std::vector<std::string> variants(const std::string &word) {
-  std::vector<std::string> result;
-  result.emplace_back(word);
-  std::string capitalized = word;
-  if (!capitalized.empty()) { capitalized[0] = static_cast<char>(std::toupper(capitalized[0])); }
-  result.emplace_back(capitalized);
-  std::string upper = word;
-  std::transform(upper.begin(), upper.end(), upper.begin(), [](unsigned char ch) { return std::toupper(ch); } );
-  result.emplace_back(upper);
-  return result;
-}
-
 int main(int argc, char *argv[]) {
   if (argc < 6) { return EXIT_SUCCESS; }
   std::vector<std::string> usernames = {"frost"};
@@ -56,4 +44,16 @@ int main(int argc, char *argv[]) {
     }
   }
   return EXIT_SUCCESS;
+}
+
+std::vector<std::string> variants(const std::string &word) {
+  std::vector<std::string> result;
+  result.emplace_back(word);
+  std::string capitalized = word;
+  if (!capitalized.empty()) { capitalized[0] = static_cast<char>(std::toupper(capitalized[0])); }
+  result.emplace_back(capitalized);
+  std::string upper = word;
+  std::transform(upper.begin(), upper.end(), upper.begin(), [](unsigned char ch) { return std::toupper(ch); } );
+  result.emplace_back(upper);
+  return result;
 }
