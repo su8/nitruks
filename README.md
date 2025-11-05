@@ -25,16 +25,24 @@ Example running the program `nitruks -f frost -o user root`
 ## Python version of nitruks
 
 ```python
-import itertools
+import sys
+import itertools;
+import sys
 
+def main():
+    roles = []
+    for arg in sys.argv[1:]:
+        roles.append(arg)
 class Generate(object):
   def variants(self, word):
     return [word, word.capitalize(), word.upper()];
 
   def __init__(self):
     self.user = ['frost'];
-    self.roles = ['user', 'root'];
+    self.roles = [];
     self.seperators = ['', '_'];
+    for arg in sys.argv[1:]:
+        self.roles.append(arg);
     for userName, r, sep in itertools.product(self.user, self.roles, self.seperators):
       for userz, rolez, in itertools.product(self.variants(userName), self.variants(r)):
         print(f"{userz}{sep}{rolez}\n");
