@@ -29,19 +29,24 @@ import sys;
 import itertools;
 
 class Generate(object):
-  def variants(self, word):
-    return [word, word.capitalize(), word.upper()];
+    def variants(self, word):
+        return [word, word.capitalize(), word.upper()];
 
-  def __init__(self):
-    self.user = ['frost'];
-    self.roles = ['user', 'root'];
-    self.seperators = ['', '_'];
-    for userName, r, sep in itertools.product(self.user, self.roles, self.seperators):
-      for userz, rolez, in itertools.product(self.variants(userName), self.variants(r)):
-        print(f"{userz}{sep}{rolez}\n");
-
+    def __init__(self):
+        if len(sys.argv) < 4:
+            sys.exit(1);
+        if sys.argv[1][1] == 'f':
+            self.user = [sys.argv[2]];
+        self.roles = [];
+        self.seperators = ['', '_'];
+        if sys.argv[3][1] == 'o':
+            for arg in sys.argv[4:]:
+                self.roles.append(arg);
+        for userName, r, sep in itertools.product(self.user, self.roles, self.seperators):
+            for userz, rolez in itertools.product(self.variants(userName), self.variants(r)):
+                print(f"{userz}{sep}{rolez}\n");
 if __name__ == '__main__':
-  Generate();
+    Generate();
 ```
 
 ---
