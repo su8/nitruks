@@ -1,7 +1,5 @@
-[![C/C++ CI](https://github.com/su8/nitruks/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/su8/nitruks/actions/workflows/c-cpp.yml)
-
-# nitruks
-Generate alternate case from runtime strings
+# nitruks [![C/C++ CI](https://github.com/su8/nitruks/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/su8/nitruks/actions/workflows/c-cpp.yml)
+Generate alternate case from runtime strings. Perfect to generate rainbox tables to be used by `john the ripper` to crack passwords.
 
 # Compile
 
