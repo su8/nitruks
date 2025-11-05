@@ -28,7 +28,7 @@ MA 02110-1301, USA.
 std::vector<std::string> variants(const std::string &word);
 
 int main(int argc, char *argv[]) {
-  if (argc < 6) { return EXIT_SUCCESS; }
+  if (argc < 6) { return EXIT_FAILURE; }
   std::vector<std::string> usernames = {"frost"};
   std::vector<std::string> roles = {"user", "root"};
   std::vector<std::string> separators = {"", "_"};
