@@ -16,7 +16,7 @@ sudo make install
 
 `-f` the username/starting string
 
-`-o` the roles, must be exactly `2` separated by space
+`-o` the roles, they are separated by space. You can specify unlimited roles.
 
 Example running the program `nitruks -f frost -o user root`
 
