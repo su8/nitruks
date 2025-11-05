@@ -1,5 +1,5 @@
 # nitruks [![C/C++ CI](https://github.com/su8/nitruks/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/su8/nitruks/actions/workflows/c-cpp.yml)
-Generate alternate case from runtime strings. Perfect to generate rainbow tables to be used by `john the ripper` to crack passwords.
+Generate alternate case from runtime strings. Perfect for generating permutations of credentials for testing or security auditing. generates all possible combinations of a username and two roles with different casing styles and separators. It's useful for creating variations of strings, such as for password cracking tools like rainbow tablesow tables to be used by `john the ripper`.
 
 # Compile
 
