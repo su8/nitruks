@@ -34,10 +34,8 @@ class Generate(object):
 
   def __init__(self):
     self.user = ['frost'];
-    self.roles = [];
+    self.roles = ['user', 'root'];
     self.seperators = ['', '_'];
-    for arg in sys.argv[1:]:
-        self.roles.append(arg);
     for userName, r, sep in itertools.product(self.user, self.roles, self.seperators):
       for userz, rolez, in itertools.product(self.variants(userName), self.variants(r)):
         print(f"{userz}{sep}{rolez}\n");
