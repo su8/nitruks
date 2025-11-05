@@ -25,6 +25,7 @@ MA 02110-1301, USA.
 #include <random>
 #include <algorithm>
 #include <iterator>
+#include <vector>
 
 std::vector<std::string> variants(const std::string &word);
 
