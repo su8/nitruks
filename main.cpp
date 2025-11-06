@@ -23,6 +23,7 @@ MA 02110-1301, USA.
 int main(int argc, char *argv[]) {
   for (int x = 1; x < argc; x++) {
     std::string s = argv[x];
+    std::sort(s.begin(), s.end());
     while (std::next_permutation(s.begin(), s.end())) { std::cout << s << std::endl; }
   }
   return EXIT_SUCCESS;
