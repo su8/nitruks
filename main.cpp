@@ -15,45 +15,28 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 MA 02110-1301, USA.
 */
-#include <iostream>
 #include <cstdio>
-#include <cstring>
 #include <cstdlib>
-#include <cctype>
+#include <cstring>
+#include <iostream>
+#include <vector>
 #include <string>
-#include <random>
+#include <set>
 #include <algorithm>
-#include <iterator>
 
-std::vector<std::string> variants(const std::string &word);
-
-int main(int argc, char *argv[]) {
-  if (argc < 6) { return EXIT_FAILURE; }
-  std::vector<std::string> usernames = { "frost" };
+int main(int argc, char* argv[]) {
   std::vector<std::string> roles;
-  std::vector<std::string> separators = { "", "_" };
-  if (argv[1][1] == 'f') { usernames = { argv[2]}; };
-  if (argv[3][1] == 'o') { for (unsigned int x = argc - 1U; x >= 4U ; x--) { roles.emplace_back( argv[x] ); } };
-  for (const auto &x : usernames) {
-    for (const auto &z : roles) {
-      for (const auto &sep : separators) {
-        for (const auto &user : variants(x)) { // Iterate over all combinations
-          for (const auto &role : variants(z)) { std::cout << user << sep << role << std::endl; }
-        }
-      }
-    }
+  for (int x = 1; x < argc; x++) { roles.emplace_back(argv[x]); }
+  std::set<std::string> strSet;
+  for (const auto &y : roles) {
+    std::string s = y;
+    std::sort(s.begin(), s.end());
+    do {
+      strSet.insert(s);
+    } while (std::next_permutation(s.begin(), s.end()));
   }
+  std::string result;
+  for (const auto &z : strSet) { result += z; }
+  std::cout << result << std::endl;
   return EXIT_SUCCESS;
-}
-
-std::vector<std::string> variants(const std::string &word) {
-  std::vector<std::string> result;
-  result.emplace_back(word);
-  std::string capitalized = word;
-  if (!capitalized.empty()) { capitalized[0] = static_cast<char>(std::toupper(capitalized[0])); }
-  result.emplace_back(capitalized);
-  std::string upper = word;
-  std::transform(upper.begin(), upper.end(), upper.begin(), [](unsigned char ch) { return std::toupper(ch); } );
-  result.emplace_back(upper);
-  return result;
 }

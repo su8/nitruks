@@ -10,15 +10,9 @@ sudo make install
 
 ---
 
-## Program options
+## Running the program
 
-**You must specify which option to use. Without specifying one, the program won't do anything.**
-
-`-f` the username/starting string
-
-`-o` the roles, they are separated by space. You can specify unlimited roles.
-
-Example running the program `nitruks -f frost -o user root`
+`nitruks hello world`
 
 ---
 
@@ -29,24 +23,17 @@ import sys;
 import itertools;
 
 class Generate(object):
-    def variants(self, word):
-        return [word, word.capitalize(), word.upper()];
-
     def __init__(self):
-        if len(sys.argv) < 4:
-            sys.exit(1);
-        self.user = [];
-        if sys.argv[1][1] == 'f':
-            self.user.append(sys.argv[2]);
-        self.roles = [];
-        self.seperators = ['', '_'];
-        if sys.argv[3][1] == 'o':
-            self.roles = [x for x in sys.argv[4:]];
-        for userName, r, sep in itertools.product(self.user, self.roles, self.seperators):
-            for userz, rolez in itertools.product(self.variants(userName), self.variants(r)):
-                print(f"{userz}{sep}{rolez}\n");
+        self.roles = [x for x in sys.argv[1:]];
+        str2 = set();
+        for x in self.roles:
+            for z in itertools.permutations(x, len(x)):
+                str2.add(z);
+        print("{0}".format(''.join(list(itertools.chain(*str2)))));
 if __name__ == '__main__':
     Generate();
+
+# And use it like this: python main.py hello world
 ```
 
 ---
