@@ -16,9 +16,6 @@
 import sys;
 import itertools;
 
-import sys;
-import itertools;
-
 class Generate(object):
     def variants(self, word):
         return [word, word.capitalize(), word.upper()];
