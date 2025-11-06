@@ -24,19 +24,14 @@ MA 02110-1301, USA.
 #include <set>
 #include <algorithm>
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   std::vector<std::string> roles;
   for (int x = 1; x < argc; x++) { roles.emplace_back(argv[x]); }
   std::set<std::string> strSet;
   for (const auto &y : roles) {
     std::string s = y;
-    std::sort(s.begin(), s.end());
-    do {
-      strSet.insert(s);
-    } while (std::next_permutation(s.begin(), s.end()));
+    do { strSet.insert(s); } while (std::next_permutation(s.begin(), s.end()));
   }
-  std::string result;
-  for (const auto &z : strSet) { result += z; }
-  std::cout << result << std::endl;
+  for (const auto &z : strSet) { std::cout << z << std::endl; }
   return EXIT_SUCCESS;
 }
