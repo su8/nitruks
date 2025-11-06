@@ -25,12 +25,12 @@ MA 02110-1301, USA.
 #include <algorithm>
 
 int main(int argc, char *argv[]) {
-  std::vector<std::string> roles;
-  for (int x = 1; x < argc; x++) { roles.emplace_back(argv[x]); }
+  std::vector<std::string> strsToSwap;
   std::set<std::string> strSet;
-  for (const auto &y : roles) {
+  for (int x = 1; x < argc; x++) { strsToSwap.emplace_back(argv[x]); }
+  for (const auto &y : strsToSwap) {
     std::string s = y;
-    do { strSet.insert(s); } while (std::next_permutation(s.begin(), s.end()));
+    while (std::next_permutation(s.begin(), s.end())) { strSet.insert(s); }
   }
   for (const auto &z : strSet) { std::cout << z << std::endl; }
   return EXIT_SUCCESS;
