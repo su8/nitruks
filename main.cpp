@@ -15,18 +15,14 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 MA 02110-1301, USA.
 */
-#include <cstdio>
 #include <cstdlib>
-#include <cstring>
 #include <iostream>
-#include <vector>
 #include <string>
 #include <algorithm>
 
 int main(int argc, char *argv[]) {
-  std::vector<std::string> strsToSwap;
-  for (int x = 1; x < argc; x++) { strsToSwap.emplace_back(argv[x]); }
-  for (auto &s : strsToSwap) {
+  for (int x = 1; x < argc; x++) {
+    std::string s = argv[x];
     while (std::next_permutation(s.begin(), s.end())) { std::cout << s << std::endl; }
   }
   return EXIT_SUCCESS;
