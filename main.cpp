@@ -21,7 +21,6 @@ MA 02110-1301, USA.
 #include <iostream>
 #include <vector>
 #include <string>
-#include <set>
 #include <algorithm>
 
 int main(int argc, char *argv[]) {
