@@ -26,8 +26,7 @@ MA 02110-1301, USA.
 int main(int argc, char *argv[]) {
   std::vector<std::string> strsToSwap;
   for (int x = 1; x < argc; x++) { strsToSwap.emplace_back(argv[x]); }
-  for (const auto &y : strsToSwap) {
-    std::string s = y;
+  for (auto &s : strsToSwap) {
     while (std::next_permutation(s.begin(), s.end())) { std::cout << s << std::endl; }
   }
   return EXIT_SUCCESS;
