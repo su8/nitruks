@@ -41,42 +41,46 @@ if __name__ == '__main__':
 
 ## Rust version of nitruks
 
+File `Cargo.toml`
+
+```python
+[package]
+name = "nitruks"
+
+[[bin]]
+name = "nitruks"
+path = "/home/USERNAME_GOES_HERE/nitruks.rs"
+
+[dependecies]
+itertools = "0.14.0"
+```
+
+File `nitruks.rs`
+
 ```rust
 use std::env;
-use std::process;
-
-fn variants(word: &str) -> Vec<String> {
-    let mut result = Vec::new();
-    result.push(word.to_string());
-    if !word.is_empty() {
-        let mut capitalized = word.to_string();
-        if let Some(first_char) = capitalized.get_mut(0..1) { first_char.make_ascii_uppercase(); }
-        result.push(capitalized);
-    }
-    result.push(word.to_uppercase());
-    result
-}
+extern crate itertools;
+use itertools::Itertools;
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    if args.len() < 6 { process::exit(1); }
-    let mut usernames = vec!["frost".to_string()];
-    let mut roles = Vec::new();
-    let separators = vec!["".to_string(), "_".to_string()];
-    if args[1].starts_with('-') && args[1].contains('f') { usernames = vec![args[2].clone()]; }
-    if args[3].starts_with('-') && args[3].contains('o') { for x in (4..args.len()).rev() { roles.push(args[x].clone()); } }
-    for username in &usernames {
-        for role in &roles {
-            for sep in &separators {
-                for user in variants(username) {
-                    for r in variants(role) {
-                        println!("{}{}{}", user, sep, r);
-                    }
-                }
-            }
-        }
+    let args: Vec<String> = env::args().skip(1).collect();
+    let mut str: Vec<String> = Vec::new();
+    for x in args {
+        for z in x.chars().permutations(x.len()) { str.push(z.collect::<String>()); }
+    }
+    let str: Vec<String> = str.iter().cloned().collect::<std::collections::HashSet<_>>().iter().cloned().collect();
+    for v in str {
+        println!("{}", v);
     }
 }
+```
+
+Then run:
+
+```bash
+cargo build
+cargo install
+.cargo/bin/nitruks hello
 ```
 
 ---
