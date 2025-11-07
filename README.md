@@ -63,15 +63,12 @@ extern crate itertools;
 use itertools::Itertools;
 
 fn main() {
-    let args: Vec<String> = env::args().skip(1).collect();
-    let mut str: Vec<String> = Vec::new();
-    for x in args {
-        for z in x.chars().permutations(x.len()) { str.push(z.collect::<String>()); }
+    let roles: Vec<String> = env::args().skip(1).collect();
+    let mut str = std::collections::HashSet::new();
+    for x in &roles {
+        for z in x.chars().permutations(x.len()) { str.insert(z.into_iter().collect::<String>());
     }
-    let str: Vec<String> = str.iter().cloned().collect::<std::collections::HashSet<_>>().iter().cloned().collect();
-    for v in str {
-        println!("{}", v);
-    }
+    for v in str { println!("{}", v); }
 }
 ```
 
