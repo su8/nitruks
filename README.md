@@ -29,7 +29,8 @@ class Generate(object):
         for x in self.roles:
             for z in itertools.permutations(x, len(x)):
                 str2.add(z);
-        print("{0}".format(''.join(list(itertools.chain(*str2)))));
+        for v in str2:
+            print("{0}".format(''.join([''.join(y) for y in v])));
 if __name__ == '__main__':
     Generate();
 
