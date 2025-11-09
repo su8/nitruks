@@ -1,6 +1,6 @@
 # nitruks [![C/C++ CI](https://github.com/su8/nitruks/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/su8/nitruks/actions/workflows/c-cpp.yml)
 
-Perfect for generating permutations of credentials for testing or security auditing. Generates all possible combinations of a username and many roles with different casing styles and separators. It's useful for creating variations of strings, such as for password cracking tools like rainbow tables to be used by `john the ripper`.
+Perfect for generating permutations of credentials for testing or security auditing. It's useful for creating variations of strings, such as for password cracking tools like rainbow tables to be used by `john the ripper`.
 
 # Compile
 
